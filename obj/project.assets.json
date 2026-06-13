@@ -539,11 +539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\UnitConversionApi\\UnitConversionApi.csproj",
+      "projectUniqueName": "C:\\UniteconversionProject\\UniteconversionProject\\UnitConversionApi.csproj",
       "projectName": "UnitConversionApi",
-      "projectPath": "C:\\UnitConversionApi\\UnitConversionApi.csproj",
+      "projectPath": "C:\\UniteconversionProject\\UniteconversionProject\\UnitConversionApi.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\UnitConversionApi\\obj\\",
+      "outputPath": "C:\\UniteconversionProject\\UniteconversionProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
