@@ -195,6 +195,8 @@ Open browser:
 
 ```
 https://localhost:<port>/swagger
+OR
+http://localhost:<port>/swagger/index.html
 ```
 
 
@@ -202,6 +204,8 @@ Example:
 
 ```
 https://localhost:7000/swagger
+OR
+http://localhost:7000/swagger/index.html
 ```
 
 
