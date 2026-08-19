@@ -203,7 +203,11 @@ deliberate — a PoC reviewer needs to *see* that training did something.
   // 16 probabilities per drum role, one per 1/16 grid position, first 8 shown
   "rhythm": { "kick": [0.95, 0, 0, 0.10, 0.40, 0, 0, 0.05], "tabla": [] },
   "instrumentWeights": { "flute": 0.21, "sitar": 0.18, "strings": 0.31, "pad": 0.30 },
-  "formTemplates": [ ["intro",0.08],["verse",0.22],["chorus",0.25],["verse",0.20],["chorus",0.19],["outro",0.06] ],
+  // section label + fraction of total track length
+  "formTemplates": [
+    ["intro", 0.08], ["verse", 0.22], ["chorus", 0.25],
+    ["verse", 0.20], ["chorus", 0.19], ["outro", 0.06]
+  ],
   "loudnessLufs": -11.3
 }
 ```
@@ -279,8 +283,14 @@ public sealed record VocalRequest(
 public interface IVocalSynthesizer
 {
     string Name { get; }
-    VocalCapabilities Capabilities { get; }              // languages + voice types actually supported
-    Task<AudioBuffer> SynthesizeAsync(VocalRequest request, IProgress<double>? progress, CancellationToken ct);
+
+    // languages + voice types this tier actually supports
+    VocalCapabilities Capabilities { get; }
+
+    Task<AudioBuffer> SynthesizeAsync(
+        VocalRequest request,
+        IProgress<double>? progress,
+        CancellationToken ct);
 }
 ```
 
@@ -807,12 +817,20 @@ public sealed record GenerationRequest(
 public interface IStyleProfileStore
 {
     Task<StyleProfile> GetAsync(Language language, string moodTag, CancellationToken ct);
-    Task<StyleProfile> BuildAsync(IReadOnlyList<int> referenceTrackIds, IProgress<double>? p, CancellationToken ct);
+
+    Task<StyleProfile> BuildAsync(
+        IReadOnlyList<int> referenceTrackIds,
+        IProgress<double>? p,
+        CancellationToken ct);
 }
 
 public interface IComposer
 {
-    SongScore Compose(StyleProfile profile, GenerationRequest request, ulong seed, TuningProfile tuning);
+    SongScore Compose(
+        StyleProfile profile,
+        GenerationRequest request,
+        ulong seed,
+        TuningProfile tuning);
 }
 
 public interface ITrackFingerprinter
@@ -822,7 +840,10 @@ public interface ITrackFingerprinter
 
 public interface ITrackGenerator
 {
-    Task<GeneratedTrack> GenerateAsync(GenerationRequest request, IProgress<GenerationStage>? p, CancellationToken ct);
+    Task<GeneratedTrack> GenerateAsync(
+        GenerationRequest request,
+        IProgress<GenerationStage>? p,
+        CancellationToken ct);
 }
 ```
 
