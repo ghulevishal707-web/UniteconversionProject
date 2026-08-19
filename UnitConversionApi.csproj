@@ -12,14 +12,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
   </ItemGroup>
 
-  <!-- MusicTrackGenPoc is a separate solution (see MusicTrackGenPoc/MusicTrackGen.sln).
-       This project's default globs would otherwise pull its sources and obj/ output into
-       this API's compilation. -->
-  <ItemGroup>
-    <Compile Remove="MusicTrackGenPoc\**" />
-    <Content Remove="MusicTrackGenPoc\**" />
-    <None Remove="MusicTrackGenPoc\**" />
-    <EmbeddedResource Remove="MusicTrackGenPoc\**" />
-  </ItemGroup>
-
 </Project>
